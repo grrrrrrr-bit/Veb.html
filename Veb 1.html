@@ -1,117 +1,209 @@
-<a href="http://kubsu.ru/">1) абсолютная гиперссылка на главную страницу сайта kubsu.ru; </a> <br>
-<a href="https://kubsu.ru/"> 2) абсолютную на главную сайта kubsu.ru в протоколе https; </a> <br>
-<a href="https://kubsu.ru/"><img src="https://i.pinimg.com/originals/4b/0c/95/4b0c9582551d61801f32fb22905a9586.jpg" > 3) ссылку-изображение;</a> <br>
-<a href="https://moodle.kubsu.ru/login/index.php"> 4) сокращенную ссылку на внутреннюю страницу; </a> <br>
-<a href="https://moodle.kubsu.ru/">5) сокращенную ссылку на главную страницу;</a> <br>
-<a href="#ссылку"> 6) ссылку на фрагмент текущей страницы; </a> <br>
-<a href="https://example.com/page?param1=value1&param2=value2&param3=value3">7) ссылку с тремя параметрами в URL; </a> <br>
-<a href="https://example.com/page?id=1">8) ссылку с параметром id в URL; </a> <br>
-<a  href="./d.txt">9) относительную на страницу в текущем каталоге; </a> <br>
-<a href="./VV.html">10) относительную на страницу в каталоге about; </a> <br>
-<a href="../index.html"> 11) относительную на страницу в каталоге уровнем выше текущего; </a><br>
-<a href="../../index.html"> 12) относительную на страницу в каталоге двумя уровнями выше;  </a><br>
-<a>13)контекстная<a href= "https://kubsu.ru/" > ссылка </a><br> 
-<a href="https://moodle.kubsu.ru/course/index.php?categoryid=3">14)ссылку на фрагмент страницы стороннего сайта</a><br> 
-	<p>15)ссылки из круглых областей картинки (HTML-тег map);  </p>
-	<map name="clickable">
-	  <area shape="circle" coords="200,164,30" href="https://kubsu.ru/">
-	</map>
-<img usemap="#clickable" src="https://storage.vsemayki.ru/images/0/0/936/936418/previews/people_2_pad_front_white_500.jpg" alt="picture" width="500px" height="300px">
-</body><br> 
-
-<a href="#">16)ссылку с пустым href;</a><br> 
-
-<a "f.html">17)ссылку без href;</a><br>
-<a href="https://example.com" rel="nofollow">18) ссылку, по которой запрещен переход поисковикам;</a><br>
-
-<noindex><a href=»https://example.com» rel=»nofollow»>19) запрещенную для индексации поисковиками;</a></noindex>
-<ol>
-  <li><a href="https://kubsu.ru/?ysclid=mfokdxrpfg989067231" title="Подпись 1">Ссылка 1</a></li>
-  <li><a href="https://kubstu.ru/?ysclid=mfokdem4f8771855356" title="Подпись 2">Ссылка 2</a></li>
-  <li><a href="https://store.steampowered.com/" title="Подпись 3">Ссылка 3</a></li>
-</ol><p>20)нумерованный список ссылок с подписями title; </p>
-ссылку на файл на сервере FTP с авторизацией;
-
-
-
-
 <!DOCTYPE html>
 <html lang="ru">
-
+<head>
+    <meta charset="UTF-8">
+    <title>Примеры ссылок и форма регистрации</title>
+    <style>
+        .form-container {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+        }
+        textarea {
+            height: 80px;
+        }
+        .radio-group {
+            display: flex;
+            gap: 20px;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+        }
+        .checkbox-group input {
+            margin-right: 8px;
+        }
+        button {
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .hint {
+            font-size: 12px;
+            color: #666;
+            margin-top: 3px;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Форма регистрации</h1>
+ 
+    <a href="http://kubsu.ru/">1) абсолютная гиперссылка на главную страницу сайта kubsu.ru;</a><br>
+
+  
+    <a href="https://kubsu.ru/">2) абсолютная на главную сайта kubsu.ru в протоколе https;</a><br>
+
+
+    <a href="https://kubsu.ru/">  3) ссылку-изображение;
+        <img src="https://colab.ws/storage/images/resized/ZunzPDBGq2IX6KTpUfW3TGLRhxU2NohRlvTfEabZ_medium.png" alt="KubSU">
+    </a><br>
+
+    <a href="/login/index.php">4) сокращенную ссылку на внутреннюю страницу;</a><br>
+
+   
+    <a href="/">5) сокращенную ссылку на главную страницу;</a><br>
+
+
+    <a id="ссылку"></a>
+    <a href="#ссылку">6) ссылку на фрагмент текущей страницы;</a><br>
+
+
+    <a href="https://example.com/page?param1=value1&param2=value2&param3=value3">7) ссылку с тремя параметрами в URL;</a><br>
+
+
+    <a href="https://example.com/page?id=1">8) ссылку с параметром id в URL;</a><br>
+
+
+    <a href="d.txt">9) относительная на страницу в текущем каталоге;</a><br>
+
+ 
+    <a href="about/VV.html">10) относительная на страницу в каталоге about;</a><br>
+
+    <a href="../index.html">11) относительная на страницу в каталоге уровнем выше текущего;</a><br>
+
+
+    <a href="../../index.html">12) относительная на страницу в каталоге двумя уровнями выше;</a><br>
+
+  
+    <p>13) контекстная <a href="https://kubsu.ru/">ссылка</a></p>
+
+
+    <a href="https://moodle.kubsu.ru/course/index.php?categoryid=3">14) ссылку на фрагмент страницы стороннего сайта</a><br>
+
+ 
+    <p>15) ссылки из круглых областей картинки (HTML-тег map);</p>
+    <img src="https://storage.vsemayki.ru/images/0/0/936/936418/previews/people_2_pad_front_white_500.jpg" alt="picture" width="500" height="300" usemap="#clickable">
+    <map name="clickable">
+        <area shape="circle" coords="200,164,30" href="https://kubsu.ru/" alt="KubSU">
+    </map>
+    <br>
+
+  
+    <a href="#">16) ссылку с пустым href;</a><br>
+
+    <a>17) ссылку без href;</a><br>
+
+   
+    <a href="https://example.com" rel="nofollow">18) ссылку, по которой запрещен переход поисковикам;</a><br>
+
+
+    <a href="https://example.com" rel="nofollow noindex">19) запрещенная для индексации поисковиками;</a><br>
+
+
+    <p>20) нумерованный список ссылок с подписями title</p>
+    <ol>
+        <li><a href="https://kubsu.ru/" title="Кубанский государственный университет">Ссылка 1</a></li>
+        <li><a href="https://kubstu.ru/" title="Кубанский государственный технологический университет">Ссылка 2</a></li>
+        <li><a href="https://store.steampowered.com/" title="Steam - игровая платформа">Ссылка 3</a></li>
+    </ol>
+
+    <!-- Форма регистрации -->
+    <div class="form-container">
+        <h2>Форма регистрации</h2>
         <form id="registrationForm">
-           
+            <!-- 1) ФИО -->
             <div class="form-group">
-                <label for="fullname">ФИО <span class="required">*</span></label>
-                <input type="text" id="fullname" name="fullname" 
+                <label for="fio">ФИО *</label>
+                <input type="text" id="fio" name="fio" required placeholder="Иванов Иван Иванович">
+                <div class="hint">Пример: Иванов Иван Иванович</div>
             </div>
-            
-           
+
+            <!-- 2) Телефон -->
             <div class="form-group">
-                <label for="phone">Телефон <span class="required">*</span></label>
-                <input type="tel" id="phone" name="phone" 
+                <label for="phone">Телефон *</label>
+                <input type="tel" id="phone" name="phone" required placeholder="+7 (999) 123-45-67" minlength="11">
+                <div class="hint">Пример: +7 (999) 123-45-67 (минимум 11 символов)</div>
             </div>
-            
-         
+
+            <!-- 3) E-mail -->
             <div class="form-group">
-                <label for="email">E-mail <span class="required">*</span></label>
-                <input type="email" id="email" name="email" 
+                <label for="email">E-mail *</label>
+                <input type="email" id="email" name="email" required placeholder="example@mail.ru">
+                <div class="hint">Пример: example@mail.ru</div>
             </div>
-            
-            
+
+            <!-- 4) Дата рождения -->
             <div class="form-group">
-                <label for="birthdate">Дата рождения <span class="required">*</span></label>
+                <label for="birthdate">Дата рождения *</label>
                 <input type="date" id="birthdate" name="birthdate" required>
             </div>
-            
-           
+
+            <!-- 5) Пол -->
             <div class="form-group">
-                <label>Пол <span class="required">*</span></label>
+                <label>Пол *</label>
                 <div class="radio-group">
-                    <div class="radio-option">
+                    <div>
                         <input type="radio" id="male" name="gender" value="male" required>
                         <label for="male">Мужской</label>
                     </div>
-                    <div class="radio-option">
+                    <div>
                         <input type="radio" id="female" name="gender" value="female">
                         <label for="female">Женский</label>
                     </div>
                 </div>
             </div>
-            
-         
+
+            <!-- 6) Любимый язык программирования -->
             <div class="form-group">
-                <label for="languages">Любимый язык программирования <span class="required">*</span></label>
-                <select id="languages" name="languages" multiple required size="6">
-                  
+                <label for="language">Любимый язык программирования *</label>
+                <select id="language" name="language" multiple required size="6">
+                 
                     <option value="cpp">C++</option>
+                   
                     <option value="python">Python</option>
                     <option value="java">Java</option>
-     
+                  
                 </select>
-    
+                <div class="hint">Для выбора нескольких вариантов удерживайте Ctrl (Cmd на Mac)</div>
             </div>
-            
-           
+
+            <!-- 7) Биография -->
             <div class="form-group">
                 <label for="bio">Биография</label>
-                <textarea id="bio" name="bio" rows="5" placeholder="Расскажите о себе..."></textarea>
+                <textarea id="bio" name="bio" placeholder="Расскажите о себе..."></textarea>
             </div>
-            
-           
+
+            <!-- 8) Согласие с контрактом -->
             <div class="form-group">
                 <div class="checkbox-group">
                     <input type="checkbox" id="agreement" name="agreement" required>
-                    <label for="agreement">С контрактом ознакомлен(а) <span class="required">*</span></label>
+                    <label for="agreement">С контрактом ознакомлен(а) *</label>
                 </div>
             </div>
-            
-           
-            <button type="submit">Сохранить</button>
+
+            <!-- 9) Кнопка Сохранить -->
+            <div class="form-group">
+                <button type="submit">Сохранить</button>
+            </div>
         </form>
     </div>
 
@@ -119,7 +211,6 @@
         document.getElementById('registrationForm').addEventListener('submit', function(event) {
             event.preventDefault();
             alert('Форма успешно отправлена!');
-           
         });
     </script>
 </body>
