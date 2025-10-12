@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор стоимости услуги</title>
+    <style>
+        /* ОБЩИЕ СТИЛИ */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .calculator-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            padding: 30px;
+        }
+        
+  
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 600;
+            font-size: 28px;
+        }
+        
+        /* ГРУППЫ ПОЛЕЙ ВВОДА */
+        .input-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #34495e;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e5ee;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        
+        /* РАДИОКНОПКИ */
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .radio-option input[type="radio"] {
+            width: auto;
+        }
+        
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+        }
+        
+        /* БЛОК РЕЗУЛЬТАТА */
+        .result {
+            margin-top: 25px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            text-align: center;
+        }
+        
+        .result h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+  
+        .total-cost {
+            font-size: 32px;
+            font-weight: 700;
+            color: #27ae60;
+            margin: 15px 0;
+            padding: 10px;
+            background-color: #e8f6ef;
+            border-radius: 6px;
+        }
+        
+        /* ИНФОРМАЦИЯ О ТОВАРЕ */
+        .product-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #bdc3c7;
+        }
+        
+        .product-info div {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .product-info span {
+            display: block;
+            font-weight: 600;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        
+        .product-info .value {
+            color: #2c3e50;
+            margin-top: 5px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+      
+        .error-message {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .error-message.active {
+            display: block;
+        }
+      
+        .hidden {
+            display: none;
+        }
+        
+        /* АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ */
+        @media (max-width: 480px) {
+            .calculator-container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .total-cost {
+                font-size: 28px;
+            }
+            
+            .product-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator-container">
+        <h1>Калькулятор стоимости услуги</h1>
+        
+        <!-- ВЫБОР ТИПА УСЛУГИ  -->
+        <div class="input-group">
+            <label>Тип услуги:</label>
+            <div class="radio-group" id="service-type-group">
+                <div class="radio-option">
+                    <input type="radio" id="type1" name="service-type" value="basic" checked>
+                    <label for="type1">Грушефон мини (100 руб.)</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="type2" name="service-type" value="premium">
+                    <label for="type2">Грушефон классика (200 руб.)</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="type3" name="service-type" value="vip">
+                    <label for="type3">Грушефон про (300 руб.)</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ВВОД КОЛИЧЕСТВА -->
+        <div class="input-group">
+            <label for="quantity">Количество:</label>
+            <input type="number" id="quantity" min="1" value="1">
+            <div class="error-message" id="quantity-error">Введите корректное количество (минимум 1)</div>
+        </div>
+        
+        <!-- ВЫБОР ОПЦИИ (СЕЛЕКТ) - ПОЯВЛЯЕТСЯ ТОЛЬКО ДЛЯ ТИПА 2 -->
+        <div class="input-group hidden" id="option-group">
+            <label for="option">Выберите опцию:</label>
+            <select id="option">
+               
+            </select>
+        </div>
+        
+        <!-- ВЫБОР СВОЙСТВА (ЧЕКБОКС) - ПОЯВЛЯЕТСЯ ТОЛЬКО ДЛЯ ТИПА 3 -->
+        <div class="input-group hidden" id="property-group">
+            <div class="checkbox-group">
+                <input type="checkbox" id="property" value="express">
+                <label for="property">Красный цвет (+50 руб.)</label>
+            </div>
+        </div>
+        
+        <!-- БЛОК РЕЗУЛЬТАТА -->
+        <div class="result" id="result">
+            <h3>Стоимость вашего заказа:</h3>
+            <div class="total-cost" id="total-cost">100 руб.</div>
+            
+            <div class="product-info">
+                <div>
+                    <span>Тип услуги</span>
+                    <div class="value" id="service-type">Базовая</div>
+                </div>
+                <div>
+                    <span>Цена за шт.</span>
+                    <div class="value" id="service-price">100 руб.</div>
+                </div>
+                <div>
+                    <span>Количество</span>
+                    <div class="value" id="service-quantity">1</div>
+                </div>
+            </div>
+            
+            <!-- ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ -->
+            <div class="product-info hidden" id="additional-info">
+                <div>
+                    <span>Опция</span>
+                    <div class="value" id="option-value">-</div>
+                </div>
+                <div>
+                    <span>Свойство</span>
+                    <div class="value" id="property-value">-</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // ПОЛУЧЕНИЕ ВСЕХ НЕОБХОДИМЫХ ЭЛЕМЕНТОВ
+            const serviceTypeRadios = document.querySelectorAll('input[name="service-type"]');
+            const quantityInput = document.getElementById('quantity');
+            const optionGroup = document.getElementById('option-group');
+            const optionSelect = document.getElementById('option');
+            const propertyGroup = document.getElementById('property-group');
+            const propertyCheckbox = document.getElementById('property');
+            const resultDiv = document.getElementById('result');
+            const totalCostSpan = document.getElementById('total-cost');
+            const serviceTypeSpan = document.getElementById('service-type');
+            const servicePriceSpan = document.getElementById('service-price');
+            const serviceQuantitySpan = document.getElementById('service-quantity');
+            const additionalInfo = document.getElementById('additional-info');
+            const optionValueSpan = document.getElementById('option-value');
+            const propertyValueSpan = document.getElementById('property-value');
+            const quantityError = document.getElementById('quantity-error');
+            
+            // БАЗОВЫЕ ЦЕНЫ ДЛЯ КАЖДОГО ТИПА УСЛУГИ
+            const basePrices = {
+                basic: 100,
+                premium: 200,
+                vip: 300
+            };
+            
+            // ОПЦИИ 
+            const premiumOptions = [
+                { value: 'standard', text: 'Стандарт', price: 0 },
+                { value: 'advanced', text: 'Продвинутая камера (+50 руб.)', price: 50 },
+                { value: 'pro', text: ' Увеличеная память (+100 руб.)', price: 100 }
+            ];
+            
+            // ФУНКЦИЯ ДЛЯ ОБНОВЛЕНИЯ ФОРМЫ В ЗАВИСИМОСТИ ОТ ВЫБРАННОГО ТИПА УСЛУГИ
+            function updateForm() {
+                
+                let selectedType = '';
+                serviceTypeRadios.forEach(radio => {
+                    if (radio.checked) {
+                        selectedType = radio.value;
+                    }
+                });
+                
+          
+                optionGroup.classList.add('hidden');
+                propertyGroup.classList.add('hidden');
+                additionalInfo.classList.add('hidden');
+                
+                // ОТОБРАЖАЕМ НУЖНЫЕ ЭЛЕМЕНТЫ В ЗАВИСИМОСТИ ОТ ТИПА УСЛУГИ
+                if (selectedType === 'premium') {
+              
+                    optionGroup.classList.remove('hidden');
+                    
+              
+                    optionSelect.innerHTML = '';
+                    premiumOptions.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.textContent = option.text;
+                        optionElement.setAttribute('data-price', option.price);
+                        optionSelect.appendChild(optionElement);
+                    });
+                } else if (selectedType === 'vip') {
+                    
+                    propertyGroup.classList.remove('hidden');
+                }
+                
+             
+                calculateCost();
+            }
+            
+            // ФУНКЦИЯ РАСЧЕТА СТОИМОСТИ
+            function calculateCost() {
+            
+                quantityError.classList.remove('active');
+                
+             
+                let selectedType = '';
+                let selectedTypeText = '';
+                serviceTypeRadios.forEach(radio => {
+                    if (radio.checked) {
+                        selectedType = radio.value;
+                        selectedTypeText = radio.nextElementSibling.textContent.split(' (')[0];
+                    }
+                });
+                
+                // ПОЛУЧАЕМ КОЛИЧЕСТВО
+                let quantity = parseInt(quantityInput.value);
+             
+                if (isNaN(quantity) || quantity < 1) {
+                    quantityError.classList.add('active');
+                    return;
+                }
+                
+                // РАССЧИТЫВАЕМ БАЗОВУЮ ЦЕНУ
+                let basePrice = basePrices[selectedType];
+                let optionPrice = 0;
+                let propertyPrice = 0;
+                
+             
+                if (selectedType === 'premium') {
+                    const selectedOption = optionSelect.options[optionSelect.selectedIndex];
+                    optionPrice = parseFloat(selectedOption.getAttribute('data-price'));
+                }
+                
+               
+                if (selectedType === 'vip' && propertyCheckbox.checked) {
+                    propertyPrice = 50;
+                }
+                
+                const totalCost = (basePrice + optionPrice + propertyPrice) * quantity;
+                
+             
+                serviceTypeSpan.textContent = selectedTypeText;
+                servicePriceSpan.textContent = (basePrice + optionPrice + propertyPrice) + ' руб.';
+                serviceQuantitySpan.textContent = quantity;
+                totalCostSpan.textContent = totalCost.toLocaleString('ru-RU') + ' руб.';
+                
+         
+                if (selectedType === 'premium' || selectedType === 'vip') {
+                    additionalInfo.classList.remove('hidden');
+                    
+                    if (selectedType === 'premium') {
+                        const selectedOption = optionSelect.options[optionSelect.selectedIndex];
+                        optionValueSpan.textContent = selectedOption.textContent.split(' (')[0];
+                        propertyValueSpan.textContent = '-';
+                    } else if (selectedType === 'vip') {
+                        optionValueSpan.textContent = '-';
+                        propertyValueSpan.textContent = propertyCheckbox.checked ? 'Крассный цвет' : '-';
+                    }
+                }
+            }
+            
+            // ОБРАБОТЧИКИ СОБЫТИЙ
+            
+            
+            serviceTypeRadios.forEach(radio => {
+                radio.addEventListener('change', updateForm);
+            });
+            
+          
+            quantityInput.addEventListener('input', calculateCost);
+            
+         
+            optionSelect.addEventListener('change', calculateCost);
+            
+     
+            propertyCheckbox.addEventListener('change', calculateCost);
+            
+           
+            updateForm();
+        });
+    </script>
+</body>
+</html>
