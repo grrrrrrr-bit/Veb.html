@@ -1,222 +1,380 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Примеры ссылок и форма регистрации</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            background-color: #1361fc;
+            color: white;
+            padding: 15px 0;
+            margin-bottom: 20px;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 60px;
+            margin-right: 40px;
+        }
+        
+        .site-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        nav {
+            background-color: #ffffff;
+            padding: 10px 0;
+            margin-bottom: 20px;
+        }
+        
+        .nav-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        
+        .nav-menu li {
+            margin-right: 20px;
+        }
+        
+        .nav-menu a {
+            color: rgb(85, 105, 131);
+            text-decoration: none;
+        }
+        
+        .nav-menu a:hover {
+            text-decoration: underline;
+        }
+        
+        section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+        }
+        
+        h2 {
+            color: #04328e;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #3888d2;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #38beef;
+        }
+        
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+       
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+        }
+        
+        textarea {
+            height: 80px;
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+        }
+        
+       
+        
+        button {
+            padding: 10px 20px;
+            background: #3366cc;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+       
+        
+        footer {
+            background-color: #444;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px;
+        }
+        
+        
+        
+        .links-list a {
+            display: block;
+            margin-bottom: 5px;
+            color: #3366cc;
+            text-decoration: none;
+        }
+        
+        .links-list a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+             <img src="https://leader-id.storage.yandexcloud.net/upload/3433252/9daf31c4-1a1d-4532-af6a-91299544f1cc.jpg" alt="Логотип" style="height: 100px; vertical-align: middle;">
+            </div>
+            <div class="site-title">Эксперементальный сайт</div>
+        </div>
+    </header>
 
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f9f9f9;
-}
+    <nav>
+        <div class="container">
+            <ul class="nav-menu">
+                <li><a href="#links">Ссылки</a></li>
+                <li><a href="#table">Таблица</a></li>
+                <li><a href="#form">Форма</a></li>
+            </ul>
+        </div>
+    </nav>
 
-.container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 15px;
-}
+    <main class="container">
+        <section id="links">
+            <h2>Примеры ссылок</h2>
+            
+            <div class="links-list">
+                <a href="http://kubsu.ru/">1) абсолютная гиперссылка на главную страницу сайта kubsu.ru;</a>
+                <a href="https://kubsu.ru/">2) абсолютная на главную сайта kubsu.ru в протоколе https;</a>
+                <a href="https://kubsu.ru/">3) ссылку-изображение
+                    <img src="https://colab.ws/storage/images/resized/ZunzPDBGq2IX6KTpUfW3TGLRhxU2NohRlvTfEabZ_medium.png" alt="KubSU" style="height: 100px; vertical-align: middle;">
+                </a>
+                <a href="/login/index.php">4) сокращенную ссылку на внутреннюю страницу;</a>
+                <a href="/">5) сокращенную ссылку на главную страницу;</a>
+                <a id="ссылку"></a>
+                <a href="#ссылку">6) ссылку на фрагмент текущей страницы;</a>
+                <a href="https://example.com/page?param1=value1&amp;param2=value2&amp;param3=value3">7) ссылку с тремя параметрами в URL;</a>
+                <a href="https://example.com/page?id=1">8) ссылку с параметром id в URL;</a>
+                <a href="d.txt">9) относительная на страницу в текущем каталоге;</a>
+                <a href="about/VV.html">10) относительная на страницу в каталоге about;</a>
+                <a href="../index.html">11) относительная на страницу в каталоге уровнем выше текущего;</a>
+                <a href="../../index.html">12) относительная на страницу в каталоге двумя уровнями выше;</a>
+                <p>13) контекстная <a href="https://kubsu.ru/">ссылка</a></p>
+                <a href="https://moodle.kubsu.ru/course/index.php?categoryid=3">14) ссылку на фрагмент страницы стороннего сайта</a>
+                
+                <p>15) ссылки из круглых областей картинки (HTML-тег map);</p>
+                <img src="https://storage.vsemayki.ru/images/0/0/936/936418/previews/people_2_pad_front_white_500.jpg" alt="picture" width="500" height="300" usemap="#clickable">
+                <map name="clickable">
+                    <area shape="circle" coords="200,164,30" href="https://kubsu.ru/" alt="KubSU">
+                </map>
+                
+                <a href="#">16) ссылку с пустым href;</a>
+                <a>17) ссылку без href;</a>
+                <a href="https://example.com" rel="nofollow">18) ссылку, по которой запрещен переход поисковикам;</a>
+                <a href="https://example.com" rel="nofollow noindex">19) запрещенная для индексации поисковиками;</a>
+                
+                <p>20) нумерованный список ссылок с подписями title</p>
+                <ol>
+                    <li><a href="https://kubsu.ru/" title="Кубанский государственный университет">Ссылка 1</a></li>
+                    <li><a href="https://kubstu.ru/" title="Кубанский государственный технологический университет">Ссылка 2</a></li>
+                    <li><a href="https://store.steampowered.com/" title="Steam - игровая платформа">Ссылка 3</a></li>
+                </ol>
+            </div>
+        </section>
 
-/* Шапка */
-header {
-    background-color: #007bff;
-    color: white;
-    padding: 15px 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
+        <section id="table">
+            <h2>Таблица языков программирования</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Язык программирования</th>
+                        <th>Год создания</th>
+                        <th>Уровень сложности</th>
+                        <th>Популярность</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Python</td>
+                        <td>1991</td>
+                        <td>Низкий</td>
+                        <td>Очень высокая</td>
+                    </tr>
+                    <tr>
+                        <td>JavaScript</td>
+                        <td>1995</td>
+                        <td>Средний</td>
+                        <td>Очень высокая</td>
+                    </tr>
+                    <tr>
+                        <td>Java</td>
+                        <td>1995</td>
+                        <td>Средний</td>
+                        <td>Высокая</td>
+                    </tr>
+                    <tr>
+                        <td>C++</td>
+                        <td>1983</td>
+                        <td>Высокий</td>
+                        <td>Высокая</td>
+                    </tr>
+                    <tr>
+                        <td>PHP</td>
+                        <td>1995</td>
+                        <td>Низкий</td>
+                        <td>Высокая</td>
+                    </tr>
+                    <tr>
+                        <td>Swift</td>
+                        <td>2014</td>
+                        <td>Средний</td>
+                        <td>Средняя</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
 
-.header-content {
-    display: flex;
-    align-items: center;
-}
+        <section id="form">
+            <h2>Форма регистрации</h2>
+            <div class="form-container">
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <label for="fio">ФИО *</label>
+                        <input type="text" id="fio" name="fio" required placeholder="Иванов Иван Иванович">
+                        <div class="hint">Пример: Иванов Иван Иванович</div>
+                    </div>
 
-.logo-container {
-    display: flex;
-    align-items: center;
-}
+                    <div class="form-group">
+                        <label for="phone">Телефон *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="+7 (999) 123-45-67" minlength="11">
+                        <div class="hint">Пример: +7 (999) 123-45-67 (минимум 11 символов)</div>
+                    </div>
 
-.logo {
-    margin-right: 15px;
-    border-radius: 5px;
-}
+                    <div class="form-group">
+                        <label for="email">E-mail *</label>
+                        <input type="email" id="email" name="email" required placeholder="example@mail.ru">
+                        <div class="hint">Пример: example@mail.ru</div>
+                    </div>
 
-.site-title {
-    font-size: 24px;
-}
+                    <div class="form-group">
+                        <label for="birthdate">Дата рождения *</label>
+                        <input type="date" id="birthdate" name="birthdate" required>
+                    </div>
 
-/* Навигация */
-nav {
-    background-color: #343a40;
-    padding: 10px 0;
-}
+                    <div class="form-group">
+                        <label>Пол *</label>
+                        <div class="radio-group">
+                            <div>
+                                <input type="radio" id="male" name="gender" value="male" required>
+                                <label for="male">Мужской</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="female" name="gender" value="female">
+                                <label for="female">Женский</label>
+                            </div>
+                        </div>
+                    </div>
 
-.nav-menu {
-    display: flex;
-    list-style: none;
-}
+                    <div class="form-group">
+                        <label for="language">Любимый язык программирования *</label>
+                        <select id="language" name="language" multiple required size="6">
+                            <option value="pascal">Pascal</option>
+                            <option value="c">C</option>
+                            <option value="cpp">C++</option>
+                            <option value="javascript">JavaScript</option>
+                            <option value="php">PHP</option>
+                            <option value="python">Python</option>
+                            <option value="java">Java</option>
+                            <option value="haskel">Haskel</option>
+                            <option value="clojure">Clojure</option>
+                            <option value="prolog">Prolog</option>
+                            <option value="scala">Scala</option>
+                        </select>
+                        <div class="hint">Для выбора нескольких вариантов удерживайте Ctrl </div>
+                    </div>
 
-.nav-menu li {
-    margin-right: 20px;
-}
+                    <div class="form-group">
+                        <label for="bio">Биография</label>
+                        <textarea id="bio" name="bio" placeholder="Расскажите о себе..."></textarea>
+                    </div>
 
-.nav-menu a {
-    color: white;
-    text-decoration: none;
-    padding: 5px 10px;
-    border-radius: 3px;
-    transition: background-color 0.3s;
-}
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="agreement" name="agreement" required>
+                            <label for="agreement">С контрактом ознакомлен(а) *</label>
+                        </div>
+                    </div>
 
-.nav-menu a:hover {
-    background-color: #495057;
-}
+                    <div class="form-group">
+                        <button type="submit">Сохранить</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
 
-/* Основное содержимое */
-main {
-    padding: 30px 0;
-}
+    <footer>
+        <div class="container">
+           
+        </div>
+    </footer>
 
-section {
-    margin-bottom: 40px;
-    background: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
-
-h2 {
-    color: #007bff;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
-}
-
-/* Таблица */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 15px 0;
-}
-
-th, td {
-    padding: 12px 15px;
-    text-align: left;
-    border: 1px solid #ddd;
-}
-
-th {
-    background-color: #007bff;
-    color: white;
-}
-
-tr:nth-child(even) {
-    background-color: #f8f9fa;
-}
-
-/* Форма */
-.form-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-input[type="text"],
-input[type="tel"],
-input[type="email"],
-input[type="date"],
-select,
-textarea {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-}
-
-textarea {
-    height: 80px;
-}
-
-.radio-group {
-    display: flex;
-    gap: 20px;
-}
-
-.checkbox-group {
-    display: flex;
-    align-items: center;
-}
-
-.checkbox-group input {
-    margin-right: 8px;
-}
-
-button {
-    padding: 10px 20px;
-    background: #007bff;
-    color: white;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #0056b3;
-}
-
-.hint {
-    font-size: 12px;
-    color: #666;
-    margin-top: 3px;
-}
-
-/* Подвал */
-footer {
-    background-color: #343a40;
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 40px;
-}
-
-/* Ссылки в основном контенте */
-main a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-main a:hover {
-    text-decoration: underline;
-}
-
-/* Адаптивность */
-@media (max-width: 768px) {
-    .nav-menu {
-        flex-direction: column;
-    }
-    
-    .nav-menu li {
-        margin-bottom: 10px;
-    }
-    
-    .header-content {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .logo {
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-}
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Форма успешно отправлена!');
+        });
+    </script>
+</body>
+</html>
