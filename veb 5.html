@@ -2,218 +2,280 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Примеры ссылок и форма регистрации</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор стоимости заказа</title>
     <style>
-        .form-container {
-            max-width: 600px;
-            margin: 30px auto;
+        /*ОБЩИЕ СТИЛИ  */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding: 20px;
-            border: 1px solid #ccc;
         }
-        .form-group {
-            margin-bottom: 15px;
+        
+        .calculator-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            padding: 30px;
         }
+        
+        /*  ЗАГОЛОВОК  */
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 600;
+            font-size: 28px;
+        }
+        
+       
+        .input-group {
+            margin-bottom: 25px;
+        }
+        
         label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #34495e;
         }
-        input[type="text"],
-        input[type="tel"],
-        input[type="email"],
-        input[type="date"],
-        select,
-        textarea {
+        
+        /*  ПОЛЯ ВВОДА И ВЫБОРА */
+        input, select {
             width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
+            padding: 12px 15px;
+            border: 2px solid #e1e5ee;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
         }
-        textarea {
-            height: 80px;
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #3498db;
         }
-        .radio-group {
-            display: flex;
-            gap: 20px;
-        }
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-        }
-        .checkbox-group input {
-            margin-right: 8px;
-        }
+        
+        /* КНОПКА РАСЧЕТА */
         button {
-            padding: 10px 20px;
-            background: #007bff;
+            background-color: #3498db;
             color: white;
             border: none;
+            border-radius: 6px;
+            padding: 14px 20px;
+            font-size: 18px;
+            font-weight: 600;
             cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
         }
-        .hint {
-            font-size: 12px;
-            color: #666;
-            margin-top: 3px;
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        /*БЛОК РЕЗУЛЬТАТА*/
+        .result {
+            margin-top: 25px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            text-align: center;
+            display: none;
+        }
+        
+        .result.active {
+            display: block;
+        }
+        
+        .result h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        /*  ОБЩАЯ СТОИМОСТЬ */
+        .total-cost {
+            font-size: 32px;
+            font-weight: 700;
+            color: #27ae60;
+            margin: 15px 0;
+            padding: 10px;
+            background-color: #e8f6ef;
+            border-radius: 6px;
+        }
+        
+        /* ИНФОРМАЦИЯ О ТОВАРЕ  */
+        .product-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #bdc3c7;
+        }
+        
+        .product-info div {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .product-info span {
+            display: block;
+            font-weight: 600;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        
+        .product-info .value {
+            color: #2c3e50;
+            margin-top: 5px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+       
+        .error-message {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .error-message.active {
+            display: block;
+        }
+        
+        /* АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ  */
+        @media (max-width: 480px) {
+            .calculator-container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .total-cost {
+                font-size: 28px;
+            }
+            
+            .product-info {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- 1) Абсолютная гиперссылка на главную страницу сайта kubsu.ru -->
-    <a href="http://kubsu.ru/">1) абсолютная гиперссылка на главную страницу сайта kubsu.ru;</a><br>
-
-    <!-- 2) Абсолютная на главную сайта kubsu.ru в протоколе https -->
-    <a href="https://kubsu.ru/">2) абсолютная на главную сайта kubsu.ru в протоколе https;</a><br>
-
-    <!-- 3) Ссылка-изображение -->
-    <a href="https://kubsu.ru/">  3) ссылку-изображение;
-        <img src="https://colab.ws/storage/images/resized/ZunzPDBGq2IX6KTpUfW3TGLRhxU2NohRlvTfEabZ_medium.png" alt="KubSU">
-    </a><br>
-
-    <!-- 4) Сокращенная ссылка на внутреннюю страницу -->
-    <a href="/login/index.php">4) сокращенную ссылку на внутреннюю страницу;</a><br>
-
-    <!-- 5) Сокращенная ссылка на главную страницу -->
-    <a href="/">5) сокращенную ссылку на главную страницу;</a><br>
-
-    <!-- 6) Ссылка на фрагмент текущей страницы -->
-    <a id="ссылку"></a>
-    <a href="#ссылку">6) ссылку на фрагмент текущей страницы;</a><br>
-
-    <!-- 7) Ссылка с тремя параметрами в URL -->
-    <a href="https://example.com/page?param1=value1&param2=value2&param3=value3">7) ссылку с тремя параметрами в URL;</a><br>
-
-    <!-- 8) Ссылка с параметром id в URL -->
-    <a href="https://example.com/page?id=1">8) ссылку с параметром id в URL;</a><br>
-
-    <!-- 9) Относительная на страницу в текущем каталоге -->
-    <a href="d.txt">9) относительная на страницу в текущем каталоге;</a><br>
-
-    <!-- 10) Относительная на страницу в каталоге about -->
-    <a href="about/VV.html">10) относительная на страницу в каталоге about;</a><br>
-
-    <!-- 11) Относительная на страницу в каталоге уровнем выше текущего -->
-    <a href="../index.html">11) относительная на страницу в каталоге уровнем выше текущего;</a><br>
-
-    <!-- 12) Относительная на страницу в каталоге двумя уровнями выше -->
-    <a href="../../index.html">12) относительная на страницу в каталоге двумя уровнями выше;</a><br>
-
-    <!-- 13) Контекстная ссылка -->
-    <p>13) контекстная <a href="https://kubsu.ru/">ссылка</a></p>
-
-    <!-- 14) Ссылка на фрагмент страницы стороннего сайта -->
-    <a href="https://moodle.kubsu.ru/course/index.php?categoryid=3">14) ссылку на фрагмент страницы стороннего сайта</a><br>
-
-    <!-- 15) Ссылки из круглых областей картинки (HTML-тег map) -->
-    <p>15) ссылки из круглых областей картинки (HTML-тег map);</p>
-    <img src="https://storage.vsemayki.ru/images/0/0/936/936418/previews/people_2_pad_front_white_500.jpg" alt="picture" width="500" height="300" usemap="#clickable">
-    <map name="clickable">
-        <area shape="circle" coords="200,164,30" href="https://kubsu.ru/" alt="KubSU">
-    </map>
-    <br>
-
-    <!-- 16) Ссылка с пустым href -->
-    <a href="#">16) ссылку с пустым href;</a><br>
-
-    <!-- 17) Ссылка без href -->
-    <a>17) ссылку без href;</a><br>
-
-    <!-- 18) Ссылка, по которой запрещен переход поисковикам -->
-    <a href="https://example.com" rel="nofollow">18) ссылку, по которой запрещен переход поисковикам;</a><br>
-
-    <!-- 19) Запрещенная для индексации поисковиками -->
-    <a href="https://example.com" rel="nofollow noindex">19) запрещенная для индексации поисковиками;</a><br>
-
-    <!-- 20) Нумерованный список ссылок с подписями title -->
-    <p>20) нумерованный список ссылок с подписями title</p>
-    <ol>
-        <li><a href="https://kubsu.ru/" title="Кубанский государственный университет">Ссылка 1</a></li>
-        <li><a href="https://kubstu.ru/" title="Кубанский государственный технологический университет">Ссылка 2</a></li>
-        <li><a href="https://store.steampowered.com/" title="Steam - игровая платформа">Ссылка 3</a></li>
-    </ol>
-
-    <!-- Форма регистрации -->
-    <div class="form-container">
-        <h2>Форма регистрации</h2>
-        <form id="registrationForm">
-            <!-- 1) ФИО -->
-            <div class="form-group">
-                <label for="fio">ФИО *</label>
-                <input type="text" id="fio" name="fio" required placeholder="Иванов Иван Иванович">
-                <div class="hint">Пример: Иванов Иван Иванович</div>
-            </div>
-
-            <!-- 2) Телефон -->
-            <div class="form-group">
-                <label for="phone">Телефон *</label>
-                <input type="tel" id="phone" name="phone" required placeholder="+7 (999) 123-45-67" minlength="11">
-                <div class="hint">Пример: +7 (999) 123-45-67 (минимум 11 символов)</div>
-            </div>
-
-            <!-- 3) E-mail -->
-            <div class="form-group">
-                <label for="email">E-mail *</label>
-                <input type="email" id="email" name="email" required placeholder="example@mail.ru">
-                <div class="hint">Пример: example@mail.ru</div>
-            </div>
-
-            <!-- 4) Дата рождения -->
-            <div class="form-group">
-                <label for="birthdate">Дата рождения *</label>
-                <input type="date" id="birthdate" name="birthdate" required>
-            </div>
-
-            <!-- 5) Пол -->
-            <div class="form-group">
-                <label>Пол *</label>
-                <div class="radio-group">
-                    <div>
-                        <input type="radio" id="male" name="gender" value="male" required>
-                        <label for="male">Мужской</label>
-                    </div>
-                    <div>
-                        <input type="radio" id="female" name="gender" value="female">
-                        <label for="female">Женский</label>
-                    </div>
+  
+    <div class="calculator-container">
+        <h1>Калькулятор стоимости заказа</h1>
+        
+        <!-- ВЫБОР ТОВАРА -->
+        <div class="input-group">
+            <label for="product">Выберите товар:</label>
+            <select id="product">
+              
+                <option value="0" data-price="100">Смартфон - 100 руб.</option>
+                <option value="1" data-price="150">Планшет - 150 руб.</option>
+                <option value="2" data-price="50">Наушники - 50 руб.</option>
+                <option value="3" data-price="200">Ноутбук - 200 руб.</option>
+                <option value="4" data-price="50">Умные часы - 50 руб.</option>
+            </select>
+        </div>
+        
+       
+        <div class="input-group">
+            <label for="quantity">Количество товара:</label>
+            <input type="number" id="quantity" min="1" value="1">
+            <div class="error-message" id="quantity-error">Введите корректное количество (минимум 1)</div>
+        </div>
+        
+        
+        <button id="calculate-btn">Рассчитать стоимость</button>
+        
+    
+        <div class="result" id="result">
+            <h3>Стоимость вашего заказа:</h3>
+            <div class="total-cost" id="total-cost">0 руб.</div>
+            
+            <div class="product-info">
+                <div>
+                    <span>Товар</span>
+                    <div class="value" id="product-name">-</div>
+                </div>
+                <div>
+                    <span>Цена за шт.</span>
+                    <div class="value" id="product-price">0 руб.</div>
+                </div>
+                <div>
+                    <span>Количество</span>
+                    <div class="value" id="product-quantity">0</div>
                 </div>
             </div>
-
-            <!-- 6) Любимый язык программирования -->
-            <div class="form-group">
-                <label for="language">Любимый язык программирования *</label>
-                <select id="language" name="language" multiple required size="6">
-                 
-                    <option value="cpp">C++</option>
-                   
-                    <option value="python">Python</option>
-                    <option value="java">Java</option>
-                  
-                </select>
-                <div class="hint">Для выбора нескольких вариантов удерживайте Ctrl (Cmd на Mac)</div>
-            </div>
-
-            <!-- 7) Биография -->
-            <div class="form-group">
-                <label for="bio">Биография</label>
-                <textarea id="bio" name="bio" placeholder="Расскажите о себе..."></textarea>
-            </div>
-
-            <!-- 8) Согласие с контрактом -->
-            <div class="form-group">
-                <div class="checkbox-group">
-                    <input type="checkbox" id="agreement" name="agreement" required>
-                    <label for="agreement">С контрактом ознакомлен(а) *</label>
-                </div>
-            </div>
-
-            <!-- 9) Кнопка Сохранить -->
-            <div class="form-group">
-                <button type="submit">Сохранить</button>
-            </div>
-        </form>
+        </div>
     </div>
 
     <script>
-        document.getElementById('registrationForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            alert('Форма успешно отправлена!');
+       
+        document.addEventListener('DOMContentLoaded', function() {
+          
+            const productSelect = document.getElementById('product');
+            const quantityInput = document.getElementById('quantity');
+            const calculateBtn = document.getElementById('calculate-btn');
+            const resultDiv = document.getElementById('result');
+            const totalCostSpan = document.getElementById('total-cost');
+            const productNameSpan = document.getElementById('product-name');
+            const productPriceSpan = document.getElementById('product-price');
+            const productQuantitySpan = document.getElementById('product-quantity');
+            const quantityError = document.getElementById('quantity-error');
+            
+            // ФУНКЦИЯ РАСЧЕТА СТОИМОСТИ
+            function calculateCost() {
+               
+                quantityError.classList.remove('active');
+                
+                
+                const selectedOption = productSelect.options[productSelect.selectedIndex];
+                const productName = selectedOption.text.split(' - ')[0];
+                const price = parseFloat(selectedOption.getAttribute('data-price'));
+                let quantity = parseInt(quantityInput.value);
+                
+                if (isNaN(quantity) || quantity < 1) {
+                    quantityError.classList.add('active');
+                    return;
+                }
+                
+                // ВЫЧИСЛЯЕМ ОБЩУЮ СТОИМОСТЬ
+                const totalCost = price * quantity;
+             
+                productNameSpan.textContent = productName;
+                productPriceSpan.textContent = price + ' руб.';
+                productQuantitySpan.textContent = quantity;
+                totalCostSpan.textContent = totalCost.toLocaleString('ru-RU') + ' руб.';
+                
+                resultDiv.classList.add('active');
+            }
+            
+            // ОБРАБОТЧИК НАЖАТИЯ КНОПКИ РАСЧЕТА
+            calculateBtn.addEventListener('click', calculateCost);
+            
+        
+            quantityInput.addEventListener('keyup', function(event) {
+                if (event.key === 'Enter') {
+                    calculateCost();
+                }
+            });
         });
     </script>
 </body>
